@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" v="4.8.4" status="GENERATED" persistenceUnitName="DEFAULT_PU" sm="false" id="_15295186316721" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+    <jpa:entity abs="false" class="Livros" v="true" xre="false" m="false" rootElement="_15295186316721" id="_15295186323392">
+        <jpa:attributes>
+            <jpa:many-to-one optional="false" connected-entity-id="_15295186323409" connected-attribute-id="_152951863234548" v="true" name="codigoAssunto" id="_152951863234415">
+                <jpa:join-column name="CODIGO_ASSUNTO" rc="CODIGO" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:one-to-many own="false" connected-entity-id="_152951863234012" connected-attribute-id="_152951863234558" v="true" name="livrosAutoresCollection" id="_152951863234417"/>
+            <jpa:one-to-one own="true" optional="false" connected-entity-id="_15295186323408" connected-attribute-id="_152951863234542" v="true" name="publicacoes" id="_152951863234416">
+                <jpa:join-column name="CODIGO" rc="CODIGO" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:one-to-one>
+            <jpa:id attribute-type="Integer" v="true" name="codigo" id="_152951863234314">
+                <jpa:column name="CODIGO" unique="false" nullable="false" insertable="true" updatable="true" table="LIVROS"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:table name="LIVROS"/>
+    </jpa:entity>
+    <jpa:entity abs="false" class="Artigos" v="true" xre="false" m="false" rootElement="_15295186316721" id="_15295186323403">
+        <jpa:attributes>
+            <jpa:one-to-many own="false" connected-entity-id="_15295186323405" connected-attribute-id="_152951863234427" v="true" name="artigosAutoresCollection" id="_152951863234420"/>
+            <jpa:one-to-many own="false" connected-entity-id="_152951863234013" connected-attribute-id="_152951863234560" v="true" name="revistaArtigosCollection" id="_152951863234422"/>
+            <jpa:one-to-one own="true" optional="false" connected-entity-id="_15295186323408" connected-attribute-id="_152951863234543" v="true" name="publicacoes" id="_152951863234419">
+                <jpa:join-column name="CODIGO" rc="CODIGO" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:one-to-one>
+            <jpa:one-to-one own="true" connected-entity-id="_152951863234010" connected-attribute-id="_152951863234551" v="true" name="palavrasChaves" id="_152951863234421"/>
+            <jpa:id attribute-type="Integer" v="true" name="codigo" id="_152951863234418">
+                <jpa:column name="CODIGO" unique="false" nullable="false" insertable="true" updatable="true" table="ARTIGOS"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:table name="ARTIGOS"/>
+    </jpa:entity>
+    <jpa:entity abs="false" class="Revistas" v="true" xre="false" m="false" rootElement="_15295186316721" id="_15295186323404">
+        <jpa:attributes>
+            <jpa:one-to-many own="false" connected-entity-id="_152951863234013" connected-attribute-id="_152951863234561" v="true" name="revistaArtigosCollection" id="_152951863234425"/>
+            <jpa:one-to-one own="true" optional="false" connected-entity-id="_15295186323408" connected-attribute-id="_152951863234544" v="true" name="publicacoes" id="_152951863234424">
+                <jpa:join-column name="CODIGO" rc="CODIGO" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:one-to-one>
+            <jpa:id attribute-type="Integer" v="true" name="codigo" id="_152951863234423">
+                <jpa:column name="CODIGO" unique="false" nullable="false" insertable="true" updatable="true" table="REVISTAS"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:table name="REVISTAS"/>
+    </jpa:entity>
+    <jpa:entity abs="false" class="ArtigosAutores" v="true" xre="false" m="false" rootElement="_15295186316721" id="_15295186323405">
+        <jpa:attributes>
+            <jpa:many-to-one optional="false" connected-entity-id="_15295186323403" connected-attribute-id="_152951863234420" v="true" name="codigoArtigo" id="_152951863234427">
+                <jpa:join-column name="CODIGO_ARTIGO" rc="CODIGO" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="false" connected-entity-id="_15295186323406" connected-attribute-id="_152951863234532" v="true" name="codigoAutor" id="_152951863234428">
+                <jpa:join-column name="CODIGO_AUTOR" rc="CODIGO" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Integer" v="true" name="codigo" id="_152951863234426">
+                <jpa:column name="CODIGO" unique="false" nullable="false" insertable="true" updatable="true" table="ARTIGOS_AUTORES"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:table name="ARTIGOS_AUTORES"/>
+    </jpa:entity>
+    <jpa:entity abs="false" class="Autores" v="true" xre="false" m="false" rootElement="_15295186316721" id="_15295186323406">
+        <jpa:attributes>
+            <jpa:basic optional="false" attribute-type="String" v="true" name="nome" id="_152951863234430">
+                <jpa:column name="NOME" unique="false" nullable="false" insertable="true" updatable="true" table="AUTORES" length="100"/>
+            </jpa:basic>
+            <jpa:basic optional="false" attribute-type="String" v="true" name="sobrenome" id="_152951863234531">
+                <jpa:column name="SOBRENOME" unique="false" nullable="false" insertable="true" updatable="true" table="AUTORES" length="100"/>
+            </jpa:basic>
+            <jpa:one-to-many own="false" connected-entity-id="_15295186323405" connected-attribute-id="_152951863234428" v="true" name="artigosAutoresCollection" id="_152951863234532"/>
+            <jpa:one-to-many own="false" connected-entity-id="_152951863234012" connected-attribute-id="_152951863234557" v="true" name="livrosAutoresCollection" id="_152951863234534"/>
+            <jpa:one-to-one own="true" optional="false" connected-entity-id="_152951863234011" connected-attribute-id="_152951863234554" v="true" name="agentes" id="_152951863234533">
+                <jpa:join-column name="CODIGO" rc="CODIGO" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:one-to-one>
+            <jpa:id attribute-type="Integer" v="true" name="codigo" id="_152951863234429">
+                <jpa:column name="CODIGO" unique="false" nullable="false" insertable="true" updatable="true" table="AUTORES"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:table name="AUTORES"/>
+    </jpa:entity>
+    <jpa:entity abs="false" class="Editores" v="true" xre="false" m="false" rootElement="_15295186316721" id="_15295186323407">
+        <jpa:attributes>
+            <jpa:basic optional="false" attribute-type="String" v="true" name="nome" id="_152951863234536">
+                <jpa:column name="NOME" unique="false" nullable="false" insertable="true" updatable="true" table="EDITORES" length="100"/>
+            </jpa:basic>
+            <jpa:one-to-many own="false" connected-entity-id="_15295186323408" connected-attribute-id="_152951863234545" v="true" name="publicacoesCollection" id="_152951863234538"/>
+            <jpa:one-to-one own="true" optional="false" connected-entity-id="_152951863234011" connected-attribute-id="_152951863234555" v="true" name="agentes" id="_152951863234537">
+                <jpa:join-column name="CODIGO" rc="CODIGO" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:one-to-one>
+            <jpa:id attribute-type="Integer" v="true" name="codigo" id="_152951863234535">
+                <jpa:column name="CODIGO" unique="false" nullable="false" insertable="true" updatable="true" table="EDITORES"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:table name="EDITORES"/>
+    </jpa:entity>
+    <jpa:entity abs="false" class="Publicacoes" v="true" xre="false" m="false" rootElement="_15295186316721" id="_15295186323408">
+        <jpa:attributes>
+            <jpa:basic optional="false" attribute-type="String" v="true" name="titulo" id="_152951863234540">
+                <jpa:column name="TITULO" unique="false" nullable="false" insertable="true" updatable="true" table="PUBLICACOES" length="100"/>
+            </jpa:basic>
+            <jpa:basic optional="false" attribute-type="java.util.Date" v="true" name="data" id="_152951863234541">
+                <jpa:temporal>DATE</jpa:temporal>
+                <jpa:column name="DATA" unique="false" nullable="false" insertable="true" updatable="true" table="PUBLICACOES"/>
+            </jpa:basic>
+            <jpa:many-to-one optional="false" connected-entity-id="_15295186323407" connected-attribute-id="_152951863234538" v="true" name="codigoEditor" id="_152951863234545">
+                <jpa:join-column name="CODIGO_EDITOR" rc="CODIGO" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:one-to-one own="false" connected-entity-id="_15295186323392" connected-attribute-id="_152951863234416" v="true" name="livros" id="_152951863234542"/>
+            <jpa:one-to-one own="false" connected-entity-id="_15295186323403" connected-attribute-id="_152951863234419" v="true" name="artigos" id="_152951863234543"/>
+            <jpa:one-to-one own="false" connected-entity-id="_15295186323404" connected-attribute-id="_152951863234424" v="true" name="revistas" id="_152951863234544"/>
+            <jpa:id attribute-type="Integer" v="true" name="codigo" id="_152951863234539">
+                <jpa:column name="CODIGO" unique="false" nullable="false" insertable="true" updatable="true" table="PUBLICACOES"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:table name="PUBLICACOES"/>
+    </jpa:entity>
+    <jpa:entity abs="false" class="Assuntos" v="true" xre="false" m="false" rootElement="_15295186316721" id="_15295186323409">
+        <jpa:attributes>
+            <jpa:basic optional="false" attribute-type="String" v="true" name="descricao" id="_152951863234547">
+                <jpa:column name="DESCRICAO" unique="false" nullable="false" insertable="true" updatable="true" table="ASSUNTOS" length="200"/>
+            </jpa:basic>
+            <jpa:one-to-many own="false" connected-entity-id="_15295186323392" connected-attribute-id="_152951863234415" v="true" name="livrosCollection" id="_152951863234548"/>
+            <jpa:id attribute-type="Integer" v="true" name="codigo" id="_152951863234546">
+                <jpa:column name="CODIGO" unique="false" nullable="false" insertable="true" updatable="true" table="ASSUNTOS"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:table name="ASSUNTOS"/>
+    </jpa:entity>
+    <jpa:entity abs="false" class="PalavrasChaves" v="true" xre="false" m="false" rootElement="_15295186316721" id="_152951863234010">
+        <jpa:attributes>
+            <jpa:basic optional="false" attribute-type="String" v="true" name="palavra" id="_152951863234550">
+                <jpa:column name="PALAVRA" unique="false" nullable="false" insertable="true" updatable="true" table="PALAVRAS_CHAVES" length="100"/>
+            </jpa:basic>
+            <jpa:one-to-one optional="false" connected-entity-id="_15295186323403" connected-attribute-id="_152951863234421" v="true" name="artigos" id="_152951863234551">
+                <jpa:join-column name="CODIGO" rc="CODIGO" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:one-to-one>
+            <jpa:id attribute-type="Integer" v="true" name="codigo" id="_152951863234549">
+                <jpa:column name="CODIGO" unique="false" nullable="false" insertable="true" updatable="true" table="PALAVRAS_CHAVES"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:table name="PALAVRAS_CHAVES"/>
+    </jpa:entity>
+    <jpa:entity abs="false" class="Agentes" v="true" xre="false" m="false" rootElement="_15295186316721" id="_152951863234011">
+        <jpa:attributes>
+            <jpa:basic optional="false" attribute-type="java.util.Date" v="true" name="dataInsercao" id="_152951863234553">
+                <jpa:temporal>DATE</jpa:temporal>
+                <jpa:column name="DATA_INSERCAO" unique="false" nullable="false" insertable="true" updatable="true" table="AGENTES"/>
+            </jpa:basic>
+            <jpa:one-to-one own="false" connected-entity-id="_15295186323406" connected-attribute-id="_152951863234533" v="true" name="autores" id="_152951863234554"/>
+            <jpa:one-to-one own="false" connected-entity-id="_15295186323407" connected-attribute-id="_152951863234537" v="true" name="editores" id="_152951863234555"/>
+            <jpa:id attribute-type="Integer" v="true" name="codigo" id="_152951863234552">
+                <jpa:column name="CODIGO" unique="false" nullable="false" insertable="true" updatable="true" table="AGENTES"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:table name="AGENTES"/>
+    </jpa:entity>
+    <jpa:entity abs="false" class="LivrosAutores" v="true" xre="false" m="false" rootElement="_15295186316721" id="_152951863234012">
+        <jpa:attributes>
+            <jpa:many-to-one optional="false" connected-entity-id="_15295186323406" connected-attribute-id="_152951863234534" v="true" name="codigoAutor" id="_152951863234557">
+                <jpa:join-column name="CODIGO_AUTOR" rc="CODIGO" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="false" connected-entity-id="_15295186323392" connected-attribute-id="_152951863234417" v="true" name="codigoLivro" id="_152951863234558">
+                <jpa:join-column name="CODIGO_LIVRO" rc="CODIGO" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Integer" v="true" name="codigo" id="_152951863234556">
+                <jpa:column name="CODIGO" unique="false" nullable="false" insertable="true" updatable="true" table="LIVROS_AUTORES"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:table name="LIVROS_AUTORES"/>
+    </jpa:entity>
+    <jpa:entity abs="false" class="RevistaArtigos" v="true" xre="false" m="false" rootElement="_15295186316721" id="_152951863234013">
+        <jpa:attributes>
+            <jpa:many-to-one optional="false" connected-entity-id="_15295186323403" connected-attribute-id="_152951863234422" v="true" name="codigoArtigo" id="_152951863234560">
+                <jpa:join-column name="CODIGO_ARTIGO" rc="CODIGO" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one optional="false" connected-entity-id="_15295186323404" connected-attribute-id="_152951863234425" v="true" name="codigoRevista" id="_152951863234561">
+                <jpa:join-column name="CODIGO_REVISTA" rc="CODIGO" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:id attribute-type="Integer" v="true" name="codigo" id="_152951863234559">
+                <jpa:column name="CODIGO" unique="false" nullable="false" insertable="true" updatable="true" table="REVISTA_ARTIGOS"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:table name="REVISTA_ARTIGOS"/>
+    </jpa:entity>
+    <jpa:snp loc="BEFORE_PACKAGE" e="true">/**
+ * This file was generated by the Jeddict
+ */</jpa:snp>
+</jpa:entity-mappings>
